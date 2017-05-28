@@ -1,5 +1,6 @@
 ﻿﻿using System;
 using System.IO;
+using System.Linq;
 using tube.Utils;
 using tube.Models;
 
@@ -41,7 +42,7 @@ namespace tube
 
             var stations = NodeUtils.FindStationsByNumberOfStops(station, numberOfStops);
 
-            stations.ForEach(n => Console.WriteLine(n.Name));
+            stations.OrderBy(s => s.Name).ToList().ForEach(n => Console.WriteLine(n.Name));
         }
 
         static string GetStationFromUser()

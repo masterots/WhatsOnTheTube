@@ -2,6 +2,7 @@ const csv = require('csv');
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
+const _ = require('lodash');
 const Graph = require('./Models/Graph.js');
 
 function readFileAsync(path) {
@@ -42,7 +43,6 @@ function getStationNameAsync() {
     });
 }
 
-
 function getStopCountAsync() {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -55,6 +55,10 @@ function getStopCountAsync() {
             resolve(answer);
         });
     });
+}
+
+function sortStationsByName(stationA, stationB) {
+    return stationA.name.toUpperCase() < stationB.name.toUpperCase() ? -1 : 1;
 }
 
 async function startApp() {
@@ -98,7 +102,7 @@ async function startApp() {
 
     const stations = startingStation.findStationsByNumberOfStops(stopCount);
 
-    stations.forEach(s => console.log(s.name));
+    _.sortBy(stations, ['name']).forEach(s => console.log(s.name));
 }
 
 startApp();

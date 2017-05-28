@@ -16,7 +16,7 @@ Node.prototype.addEdge = function(neighbor) {
 Node.prototype.findStationsByNumberOfStops = function(numberOfStops) {
     const q = new Queue();
     const stations = [];
-
+    
     let currentStationDistance = 0;
     q.enq(this);
     this.visited = true;

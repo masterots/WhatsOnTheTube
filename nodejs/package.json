@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "csv": "^1.1.1",
+    "lodash": "^4.17.4",
     "queuejs": "^0.1.0"
   }
 }
