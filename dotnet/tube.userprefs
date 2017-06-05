@@ -1,7 +1,10 @@
 ﻿<Properties StartupConfiguration="{6F71C404-A6AD-41FB-BCE0-CAD15C733BCA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Utils/NodeUtils.cs">
     <Files>
-      <File FileName="Program.cs" Line="18" Column="50" />
+      <File FileName="Program.cs" Line="18" Column="14" />
+      <File FileName="Models/Node.cs" Line="13" Column="22" />
+      <File FileName="Models/Graph.cs" Line="28" Column="14" />
+      <File FileName="Utils/NodeUtils.cs" Line="15" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />

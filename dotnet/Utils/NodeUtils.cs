@@ -9,33 +9,36 @@ namespace tube.Utils
         {
             Queue<Node> q = new Queue<Node>();
             List<Node> stations = new List<Node>();
+            Dictionary<string, int> visited = new Dictionary<string, int>();
 
             var currentStationDistance = 0;
             q.Enqueue(start);
-            start.Visited = true;
+            visited.Add(start.Name, currentStationDistance);
 
             while (q.Count > 0)
             {
                 var top = q.Peek();
-                currentStationDistance = top.StopDistance;
                 q.Dequeue();
+
+                currentStationDistance = visited.ContainsKey(top.Name)
+                                                ? visited[top.Name]
+                                                : currentStationDistance;
 
                 if (currentStationDistance < numberOfStops)
                 {
                     currentStationDistance++;
                     foreach (var node in top.Neighbors)
                     {
-                        if (!node.Visited)
+                        if (!visited.ContainsKey(node.Name))
                         {
-                            node.StopDistance = currentStationDistance;
+                            visited.Add(node.Name, currentStationDistance);
                             q.Enqueue(node);
                         }
-                        node.Visited = true;
                     }
                 }
                 else
                 {
-                    if (top.StopDistance == numberOfStops)
+                    if (visited[top.Name] == numberOfStops)
                     {
                         stations.Add(top);
                     }

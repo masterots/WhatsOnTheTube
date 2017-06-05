@@ -3,8 +3,6 @@ const Queue = require('queuejs');
 function Node(name) {
     this.name = name;
     this.neighbors = [];
-    this.visited = false;
-    this.stopDistance = 0;
 }
 
 Node.prototype.addEdge = function(neighbor) {
@@ -16,28 +14,31 @@ Node.prototype.addEdge = function(neighbor) {
 Node.prototype.findStationsByNumberOfStops = function(numberOfStops) {
     const q = new Queue();
     const stations = [];
+    const visited = new Map();
     
     let currentStationDistance = 0;
     q.enq(this);
-    this.visited = true;
+    visited.set(this.name, currentStationDistance);
 
     while (q.size() > 0) {
         let top = q.peek();
-        currentStationDistance = top.stopDistance;
         q.deq();
+
+        currentStationDistance = visited.get(top.name) 
+                                    ? visited.get(top.name) 
+                                    : currentStationDistance;
 
         if (currentStationDistance < numberOfStops) {
             currentStationDistance++;
             top.neighbors.forEach(node => {
-                if (!node.visited) {
-                    node.stopDistance = currentStationDistance;
+                if (!visited.has(node.name)) {
+                    visited.set(node.name, currentStationDistance);
                     q.enq(node);
                 }
-                node.visited = true;
             });
         }
         else {
-            if (top.stopDistance == numberOfStops) {
+            if (visited.get(top.name) == numberOfStops) {
                 stations.push(top);
             }
         }
