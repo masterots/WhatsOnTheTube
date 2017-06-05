@@ -6,7 +6,7 @@
 * `npm install`
 * `node index.js`
 * type the name of a London Tube station (eg. East Ham) and press enter
-* enter a number to view the stops away to see stations at that distance and press enter
+* enter a number and press enter to see a list of stations that number of stops away
 
 ### .NET Core
 * Clone repo
@@ -14,4 +14,4 @@
 * `dotnet restore`
 * `dotnet run`
 * type the name of a London Tube station (eg. East Ham) and press enter
-* enter a number to view the stops away to see stations at that distance and press enter
+* enter a number and press enter to see a list of stations that number of stops away
