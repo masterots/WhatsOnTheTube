@@ -1,0 +1,10 @@
+[package]
+name = "rust"
+version = "0.1.0"
+authors = ["Joshua Melvin <joshua.melvin@outlook.com>"]
+
+[dependencies]
+csv = "1.0.0-beta.3"
+serde = "1.0.7"
+serde_derive = "1"
+serde_bytes = "0.10"
